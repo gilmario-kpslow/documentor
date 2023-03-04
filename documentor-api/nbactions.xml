@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>run</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>quarkus:dev</goal>
+                
+            </goals>
+            <properties>
+                <jshell.run.classloader>system</jshell.run.classloader>
+            </properties>
+        </action>
+    </actions>
