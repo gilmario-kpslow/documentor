@@ -1,0 +1,19 @@
+<div class="mb-3 border p-2 rounded shadow">
+  <div class="header">
+    <div class="titulo text-uppercase">
+      {{dica.nome}}
+    </div>
+    <div class="subtitulo d-flex text-lowercase">
+      <span class="flex-fill text-secondary">Criado por: {{dica.autor?.nome}}</span> <span class="text-secondary">Atualizado: {{dica.dataAtualizacao}} as {{dica.horaAtualizacao}}</span><span class=""></span>
+    </div>
+  </div>
+  <div>
+    <div class="p-2">TAGS: <span class="text-uppercase text-bg-success">{{dica.tags}}</span></div>
+    <div class="mt-2 text-truncate">
+      {{dica.descricao}}
+    </div>
+  </div>
+  <div class="acoes">
+    <button class="btn btn-success" type="button" (click)="aoSelecionar()">Selecionar</button>
+  </div>
+</div>

@@ -3,7 +3,7 @@ import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 
-import { SegurancaService } from '../../core/seguranca.service';
+import { SegurancaService } from '../../../core/seguranca.service';
 import { LoginService } from '../login.service';
 
 @Component({

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { DicasModule } from './dicas/dicas.module';
+import { TemplateModule } from './modules/template/template.module';
 
 const routes: Routes = [
-  { path: '', loadChildren: () => import('./dicas/dicas.module').then(m => DicasModule) }
+  { path: '', loadChildren: () => import('./modules/template/template.module').then(m => TemplateModule) }
 ];
 
 @NgModule({

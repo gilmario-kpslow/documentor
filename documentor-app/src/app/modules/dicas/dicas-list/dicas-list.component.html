@@ -1,0 +1,19 @@
+<div>
+  <div class="row mb-3">
+    <div class="col-md">
+      <div class="input-group flex-nowrap">
+        <span class="input-group-text">@</span>
+        <div class="form-floating">
+          <input type="text" class="form-control" [formControl]="searchInput" placeholder="Username">
+          <label>Pesquisar</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-md">
+      <button class="btn btn-success" routerLink="create">Nova Dica</button>
+    </div>
+  </div>
+</div>
+<app-dica-card *ngFor="let d of lista" [dica]="d" (selecionar)="selecionaDica($event)"></app-dica-card>
+<!-- <p>dicas-list works!</p> -->
+<!-- {{lista | json}} -->
