@@ -1,11 +1,14 @@
 package br.com.gilmariosoftware.documentor.dica;
 
-import br.com.gilmariosoftware.documentor.generic.ServiceGeneric;
 import java.util.Optional;
+
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import br.com.gilmariosoftware.documentor.generic.ServiceGeneric;
 
 /**
  *

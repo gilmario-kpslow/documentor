@@ -4,9 +4,9 @@
  */
 package br.com.gilmariosoftware.documentor.dica;
 
-import io.quarkus.security.Authenticated;
 import java.util.List;
 import java.util.Optional;
+
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -14,12 +14,14 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import io.quarkus.security.Authenticated;
+
 /**
  *
  * @author gilmario
  */
 @Path("dica")
-//@DenyAll
+// @DenyAll
 public class DicaResource {
 
     @Inject
@@ -27,7 +29,7 @@ public class DicaResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-//    @Authenticated
+    // @Authenticated
     public List<DicaResponse> listarTodos() {
         return service.listarTodos();
     }
