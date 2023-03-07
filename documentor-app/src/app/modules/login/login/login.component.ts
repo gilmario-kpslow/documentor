@@ -29,7 +29,7 @@ export class LoginComponent {
   login() {
     this.loginService.login(this.username, this.password).subscribe((res) => {
       this.segurancaService.registrarAutenticacao(res);
-      this.router.navigate(['/admin'])
+      this.router.navigate([''])
     })
   }
 

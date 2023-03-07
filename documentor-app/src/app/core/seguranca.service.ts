@@ -8,7 +8,6 @@ export class SegurancaService {
   private _accessToken: string | undefined;
   private _username: string | undefined;
   loginEvent = new EventEmitter();
-  filialEvent = new EventEmitter();
 
   constructor() {
     const _existe = localStorage.getItem(TOKEN);

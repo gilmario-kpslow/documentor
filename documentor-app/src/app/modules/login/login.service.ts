@@ -5,11 +5,11 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class LoginService {
 
-  url = 'environment.api';
+  url = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string) {
-    return this.http.post(`${this.url}/autenticar`, { username, password });
+    return this.http.post(`${this.url}/login`, { username, password });
   }
 }

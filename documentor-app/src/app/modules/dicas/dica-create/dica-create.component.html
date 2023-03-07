@@ -1,9 +1,27 @@
 <div>
-  Header do Crud
+  Crian nova dica
 </div>
 <div>
   Conteudo do CRUD
+  <form [formGroup]="form">
+
+    <div class="row">
+      <div class="col-md">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" placeholder="Titulo" formControlName="nome">
+          <label for="floatingInput">Titulo</label>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-floating mb-3">
+          <textarea class="form-control" style="height: 200px;" placeholder="Discriminação"
+            formControlName="descricao"></textarea>
+          <label for="floatingInput">Descrição</label>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
 <div>
-  Ações do Crud
+  <button type="button" (click)="salvar()" class="btn btn-success">Criar</button>
 </div>

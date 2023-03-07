@@ -12,4 +12,8 @@ export class DicasService {
   listar() {
     return this.http.get<any[]>(this.url);
   }
+
+  salvar(dica: any) {
+    return this.http.post(this.url, dica);
+  }
 }

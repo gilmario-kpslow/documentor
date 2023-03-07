@@ -8,7 +8,7 @@ import { DicasListComponent } from './dicas-list/dicas-list.component';
 const routes: Routes = [
   { path: '', component: DicasListComponent },
   { path: 'create', component: DicaCreateComponent },
-  { path: ':id', component: DicaPageComponent },
+  { path: 'create/:id', component: DicaPageComponent },
 ];
 
 @NgModule({

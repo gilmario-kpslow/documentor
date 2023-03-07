@@ -1,7 +1,7 @@
-import { HttpInterceptor, HttpHandler, HttpSentEvent, HttpHeaderResponse, HttpProgressEvent,
-  HttpResponse, HttpRequest, HttpEvent } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import { SegurancaService } from './seguranca.service';
 
 @Injectable()
@@ -11,18 +11,16 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if(!req) {
+    if (!req) {
       return next.handle(req);
     }
 
     let authRequest: any;
 
-    if(this.seguranca.logado ) {
-        authRequest = req.clone({
+    if (this.seguranca.logado) {
+      authRequest = req.clone({
         setHeaders: {
-          'Authorization' : `Bearer ${this.seguranca.accessToken}`,
-          'EMPRESA' : `${this.seguranca.empresa?.id}`,
-          'FILIAL' : `${this.seguranca.filial?.id}`,
+          'Authorization': `Bearer ${this.seguranca.accessToken}`,
         }
       });
 
