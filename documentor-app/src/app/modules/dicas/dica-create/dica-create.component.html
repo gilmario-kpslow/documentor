@@ -6,6 +6,12 @@
   <form [formGroup]="form">
 
     <div class="row">
+      <div class="col-md-1">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" readonly placeholder="ID" formControlName="id">
+          <label for="floatingInput">ID</label>
+        </div>
+      </div>
       <div class="col-md">
         <div class="form-floating mb-3">
           <input type="text" class="form-control" placeholder="Titulo" formControlName="nome">
@@ -23,5 +29,5 @@
   </form>
 </div>
 <div>
-  <button type="button" (click)="salvar()" class="btn btn-success">Criar</button>
+  <button type="button" (click)="salvar()" class="btn btn-success mr-2">Criar</button>
 </div>

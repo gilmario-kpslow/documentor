@@ -19,8 +19,9 @@ export class LoginComponent {
   constructor(private loginService: LoginService, private segurancaService: SegurancaService, private router: Router) { }
 
   ngOnInit(): void {
+    console.log(this.segurancaService.logado);
     if (this.segurancaService.logado) {
-      this.router.navigate(['/admin'])
+      this.router.navigate(['/'])
     }
   }
 

@@ -1,19 +1,21 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
+
+import { GenericService } from '../../core/generic.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DicasService {
+export class DicasService extends GenericService {
 
-  url = 'http://localhost:8080/dica'
-  constructor(private http: HttpClient) { }
+  constructor(private injector: Injector) {
+    super('dica', injector);
+  }
 
   listar() {
     return this.http.get<any[]>(this.url);
   }
 
   salvar(dica: any) {
-    return this.http.post(this.url, dica);
+    return this.http.post<any>(this.url, dica);
   }
 }

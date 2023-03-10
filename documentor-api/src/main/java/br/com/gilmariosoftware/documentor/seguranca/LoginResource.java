@@ -11,13 +11,14 @@ import javax.ws.rs.core.MediaType;
  *
  * @author gilmario
  */
-@Path("login")
+@Path("auth")
 public class LoginResource {
 
     @Inject
     protected SegurancaService segurancaService;
 
     @POST
+    @Path("login")
     @Produces(value = MediaType.APPLICATION_JSON)
     @Consumes(value = MediaType.APPLICATION_JSON)
     public UsuarioLogado getToken(LoginRequest request) {

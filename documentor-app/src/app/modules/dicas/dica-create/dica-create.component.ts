@@ -10,7 +10,9 @@ import { DicasService } from '../dicas.service';
 })
 export class DicaCreateComponent {
 
+  entity: any;
   form: FormGroup = new FormGroup({
+    id: new FormControl(''),
     nome: new FormControl('', [Validators.required, Validators.minLength(10)]),
     descricao: new FormControl('', [Validators.required, Validators.maxLength(10), Validators.maxLength(2000)]),
     tags: new FormControl('', []),
@@ -19,6 +21,9 @@ export class DicaCreateComponent {
 
 
   salvar() {
-    this.service.salvar(this.form.value).subscribe(() => this.form.reset());
+    this.service.salvar(this.form.value).subscribe((a) => {
+      this.form.controls['id'].setValue(a.id);
+      console.log(a);
+    });
   }
 }

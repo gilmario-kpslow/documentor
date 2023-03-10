@@ -1,13 +1,14 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
+
+import { GenericService } from '../../core/generic.service';
 
 
 @Injectable()
-export class LoginService {
+export class LoginService extends GenericService {
 
-  url = 'http://localhost:8080';
-
-  constructor(private http: HttpClient) { }
+  constructor(private injector: Injector) {
+    super('auth', injector);
+  }
 
   login(username: string, password: string) {
     return this.http.post(`${this.url}/login`, { username, password });

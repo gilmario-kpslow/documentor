@@ -29,7 +29,7 @@ export class DicasListComponent implements OnInit {
   }
 
   selecionaDica(dica: any) {
-    this.router.navigate(['/', dica.id])
+    this.router.navigate(['/create', dica.id])
   }
 
 }
