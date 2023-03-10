@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppErrorHandler } from './app-error.handle';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthGuard } from './core/auth.guard';
 import { AuthInterceptor } from './core/auth.interceptor';
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AuthInterceptor } from './core/auth.interceptor';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: ErrorHandler, useClass: AppErrorHandler },
-    MatDialog
+    MatDialog,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

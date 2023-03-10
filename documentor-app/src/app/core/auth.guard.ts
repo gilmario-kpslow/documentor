@@ -1,14 +1,18 @@
-// import { SharedService } from '../common/shared.service';
-// @Injectable()
-// export class AuthGuard implements CanActivate {
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
-//   constructor(private router: Router, private seguranca: SegurancaService) { }
+import { SegurancaService } from './seguranca.service';
 
-//   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
-//     if (this.seguranca.logado) {
-//       return true;
-//     }
-//     this.router.navigate(['/admin/login']);
-//     return true;
-//   }
-// }
+@Injectable()
+export class AuthGuard {
+
+  constructor(private router: Router, private seguranca: SegurancaService) { }
+
+  canActivate(): boolean {
+    if (this.seguranca.logado) {
+      return true;
+    }
+    this.router.navigate(['/auth']);
+    return false;
+  }
+}
