@@ -15,5 +15,9 @@ export class MensagensComponent {
     this.config = data;
   }
 
+  close() {
+
+  }
+
 
 }

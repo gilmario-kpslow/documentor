@@ -7,11 +7,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { LoaderComponent } from './loader/loader.component';
 import { MensagensComponent } from './mensagens/mensagens.component';
+import { NaoEncontradoComponent } from './nao-encontrado/nao-encontrado.component';
 
 
 
 @NgModule({
-  declarations: [MensagensComponent, LoaderComponent],
+  declarations: [MensagensComponent, LoaderComponent, NaoEncontradoComponent],
   imports: [
     CommonModule,
     MatDialogModule,

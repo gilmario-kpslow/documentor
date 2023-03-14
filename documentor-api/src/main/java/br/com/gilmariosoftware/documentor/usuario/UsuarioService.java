@@ -1,14 +1,11 @@
 package br.com.gilmariosoftware.documentor.usuario;
 
-import java.util.Optional;
-
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import br.com.gilmariosoftware.documentor.generic.ServiceGeneric;
 import br.com.gilmariosoftware.documentor.seguranca.PasswordManager;
+import java.util.Optional;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
@@ -53,6 +50,10 @@ public class UsuarioService extends ServiceGeneric<Usuario, UsuarioResponse> {
 
     public void createPassword(RequestPassword request) {
         repository.createPassword(request.getId(), passwordManager.encript(request.getPassword()));
+    }
+
+    public Optional<UsuarioResponse> getDadosUsuarioLogado() {
+        return toResponse(getUsuarioLogado().get());
     }
 
 }

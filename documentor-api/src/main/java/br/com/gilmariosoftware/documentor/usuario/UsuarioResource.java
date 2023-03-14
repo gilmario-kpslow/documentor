@@ -1,6 +1,7 @@
 package br.com.gilmariosoftware.documentor.usuario;
 
 import br.com.gilmariosoftware.documentor.generic.GenericResource;
+import io.quarkus.security.Authenticated;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.security.DenyAll;
@@ -32,6 +33,14 @@ public class UsuarioResource extends GenericResource<Usuario, UsuarioResponse> {
         return service.listarTodos();
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Authenticated
+    @Path("auth/logado")
+    public Optional<UsuarioResponse> getUsuarioLogado() {
+        return service.getDadosUsuarioLogado();
+    }
+
     @POST
     @RolesAllowed(value = {"ADMIN"})
     public Optional<UsuarioResponse> create(UsuarioRequest request) {
@@ -45,7 +54,6 @@ public class UsuarioResource extends GenericResource<Usuario, UsuarioResponse> {
         service.createPassword(request);
     }
 
-//    @Override
     UsuarioService getService() {
         return this.service;
     }

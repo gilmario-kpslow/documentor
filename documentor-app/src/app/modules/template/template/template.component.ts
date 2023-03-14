@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from '../../usuario/usuario.service';
+import { SegurancaService } from '../../../core/seguranca.service';
+import { Usuario } from '../../usuario/usuario';
 
 
 
@@ -7,8 +10,21 @@ import { Component } from '@angular/core';
   templateUrl: './template.component.html',
   styleUrls: ['./template.component.css']
 })
-export class TemplateComponent {
+export class TemplateComponent implements OnInit {
 
-  constructor() { }
+  usuario: Usuario | undefined;
+  constructor(private service: UsuarioService) { }
+
+
+  ngOnInit(): void {
+    this.service.getUsuarioLogado().subscribe(l => {
+      this.usuario = l;
+    })
+  }
+
+  get isLogado() {
+    return this.usuario !== undefined;
+  }
+
 
 }
