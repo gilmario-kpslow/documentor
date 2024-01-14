@@ -5,6 +5,7 @@ import br.com.gilmariosoftware.documentor.seguranca.PasswordManager;
 import java.util.Optional;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -54,6 +55,10 @@ public class UsuarioService extends ServiceGeneric<Usuario, UsuarioResponse> {
 
     public Optional<UsuarioResponse> getDadosUsuarioLogado() {
         return toResponse(getUsuarioLogado().get());
+    }
+
+    public Page<UsuarioResponse> consultar(ConsultaUsuarioRequest page) {
+        return toResponse(repository.findByNomeLike(page.getNome() + "%", getPageRequest(page)), getPageRequest(page));
     }
 
 }

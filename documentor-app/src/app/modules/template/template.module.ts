@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { TemplateRoutingModule } from './template-routing.module';
 import { TemplateComponent } from './template/template.component';
+import { MatMenuModule } from '@angular/material/menu'
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { TemplateComponent } from './template/template.component';
   ],
   imports: [
     CommonModule,
-    TemplateRoutingModule
+    TemplateRoutingModule,
+    MatMenuModule,
+    MatButtonModule
 
   ]
 })

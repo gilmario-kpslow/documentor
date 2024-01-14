@@ -8,17 +8,28 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoaderComponent } from './loader/loader.component';
 import { MensagensComponent } from './mensagens/mensagens.component';
 import { NaoEncontradoComponent } from './nao-encontrado/nao-encontrado.component';
+import { TabelaComponent } from './tabela/tabela.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
 @NgModule({
-  declarations: [MensagensComponent, LoaderComponent, NaoEncontradoComponent],
+  declarations: [MensagensComponent, LoaderComponent, NaoEncontradoComponent, TabelaComponent],
   imports: [
     CommonModule,
     MatDialogModule,
     MatButtonModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
+
+  ],
+  exports: [
+    TabelaComponent
   ]
 })
 export class ComponentsModule { }
