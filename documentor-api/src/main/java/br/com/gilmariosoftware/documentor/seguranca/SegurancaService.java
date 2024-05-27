@@ -4,16 +4,17 @@ import br.com.gilmariosoftware.documentor.usuario.Usuario;
 import br.com.gilmariosoftware.documentor.usuario.UsuarioResponse;
 import br.com.gilmariosoftware.documentor.usuario.UsuarioService;
 import io.smallrye.jwt.build.Jwt;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.SecurityContext;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.eclipse.microprofile.jwt.Claims;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Optional;
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.SecurityContext;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.eclipse.microprofile.jwt.Claims;
+
 import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.modelmapper.ModelMapper;
 

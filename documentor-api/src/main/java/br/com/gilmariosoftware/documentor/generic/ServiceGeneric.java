@@ -2,11 +2,11 @@ package br.com.gilmariosoftware.documentor.generic;
 
 import br.com.gilmariosoftware.documentor.seguranca.SegurancaService;
 import br.com.gilmariosoftware.documentor.usuario.Usuario;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
 import lombok.Getter;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;

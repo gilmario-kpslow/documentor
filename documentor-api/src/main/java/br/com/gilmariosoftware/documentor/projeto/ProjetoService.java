@@ -1,8 +1,8 @@
 package br.com.gilmariosoftware.documentor.projeto;
 
 import br.com.gilmariosoftware.documentor.generic.ServiceGeneric;
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

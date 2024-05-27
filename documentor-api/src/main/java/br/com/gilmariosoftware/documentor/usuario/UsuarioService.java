@@ -2,9 +2,9 @@ package br.com.gilmariosoftware.documentor.usuario;
 
 import br.com.gilmariosoftware.documentor.generic.ServiceGeneric;
 import br.com.gilmariosoftware.documentor.seguranca.PasswordManager;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 import java.util.Optional;
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 
