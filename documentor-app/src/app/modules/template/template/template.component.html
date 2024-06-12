@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" routerLink="/">RN</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -8,13 +8,22 @@
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav me-auto mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+          <!-- <a class="nav-link active" aria-current="page" routerLink="/">Home</a> -->
         </li>
         <li class="nav-item">
-          <a class="nav-link active" mat-stroked-button aria-current="page" [matMenuTriggerFor]="menuAdmin">Admin</a>
+          <a class="nav-link" routerLinkActive="active" mat-stroked-button aria-current="page"
+            [matMenuTriggerFor]="menuAdmin">Admin</a>
           <mat-menu #menuAdmin="matMenu">
             <button mat-menu-item routerLink="usuario">Acesso</button>
             <button mat-menu-item>Item 2</button>
+          </mat-menu>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" mat-stroked-button aria-current="page" [matMenuTriggerFor]="menuProjeto">Projeto</a>
+          <mat-menu #menuProjeto="matMenu">
+            <button mat-menu-item routerLink="/projetos">Projetos</button>
+            <button mat-menu-item routerLink="/projetos/consulta">Consulta</button>
+            <button mat-menu-item routerLink="/projetos/cadastro">Cadastro</button>
           </mat-menu>
         </li>
       </ul>

@@ -39,4 +39,8 @@ export class UsuarioTabelaComponent {
     });
   }
 
+  limpar() {
+    this.form.patchValue({ nome: '' });
+  }
+
 }
