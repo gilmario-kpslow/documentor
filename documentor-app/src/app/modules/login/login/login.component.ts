@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 
@@ -12,11 +12,15 @@ import { LoginService } from '../login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  @ViewChild(NgForm) form: NgForm | undefined;
-  username: string = '';
-  password: string = '';
 
-  constructor(private loginService: LoginService, private segurancaService: SegurancaService, private router: Router) { }
+  form: FormGroup;
+  constructor(private loginService: LoginService, private segurancaService: SegurancaService, private router: Router, fb: FormBuilder) {
+
+    this.form = fb.group({
+      username: fb.nonNullable.control('', [Validators.required]),
+      password: fb.nonNullable.control('', [Validators.required]),
+    })
+  }
 
   ngOnInit(): void {
     console.log(this.segurancaService.logado);
@@ -28,7 +32,12 @@ export class LoginComponent {
   matcher = new MyErrorStateMatcher();
 
   login() {
-    this.loginService.login(this.username, this.password).subscribe((res) => {
+
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+    this.loginService.login(this.form.value).subscribe((res) => {
       this.segurancaService.registrarAutenticacao(res);
       this.router.navigate([''])
     })

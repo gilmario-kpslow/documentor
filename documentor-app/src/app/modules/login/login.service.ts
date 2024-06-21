@@ -10,7 +10,7 @@ export class LoginService extends GenericService {
     super('auth', injector);
   }
 
-  login(username: string, password: string) {
-    return this.http.post(`${this.url}/login`, { username, password });
+  login(form: any) {
+    return this.http.post(`${this.url}/login`, { ...form });
   }
 }

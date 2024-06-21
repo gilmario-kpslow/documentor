@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
 
 import { LoginService } from '../login/login.service';
 import { LoginRoutingModule } from './login-routing.module';
@@ -19,7 +20,8 @@ import { LoginComponent } from './login/login.component';
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ], providers: [
     LoginService
   ]
