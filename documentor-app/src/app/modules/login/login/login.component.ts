@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 import { SegurancaService } from '../../../core/seguranca.service';
 import { LoginService } from '../login.service';
+import { UsuarioService } from '../../usuario/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -16,10 +17,14 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
 
-  constructor(private loginService: LoginService, private segurancaService: SegurancaService, private router: Router) { }
+  constructor(
+    private loginService: LoginService,
+    private segurancaService: SegurancaService,
+    private router: Router,
+    private usuarioService: UsuarioService
+  ) { }
 
   ngOnInit(): void {
-    console.log(this.segurancaService.logado);
     if (this.segurancaService.logado) {
       this.router.navigate(['/'])
     }
@@ -30,11 +35,19 @@ export class LoginComponent {
   login() {
     this.loginService.login(this.username, this.password).subscribe((res) => {
       this.segurancaService.registrarAutenticacao(res);
-      this.router.navigate([''])
+      this.setUsuario();
     })
   }
 
+  setUsuario() {
+    this.usuarioService.getUsuarioLogado().subscribe(user => {
+      this.segurancaService.registrarUsuarioLogado(user);
+      this.router.navigate(['']);
+    });
+  }
 }
+
+
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {

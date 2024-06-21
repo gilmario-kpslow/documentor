@@ -12,11 +12,12 @@ import { TabelaComponent } from './tabela/tabela.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { FloatActionBarComponent } from './float-action-bar/float-action-bar.component';
 
 
 
 @NgModule({
-  declarations: [MensagensComponent, LoaderComponent, NaoEncontradoComponent, TabelaComponent],
+  declarations: [MensagensComponent, LoaderComponent, NaoEncontradoComponent, TabelaComponent, FloatActionBarComponent],
   imports: [
     CommonModule,
     MatDialogModule,
@@ -29,7 +30,8 @@ import { MatSortModule } from '@angular/material/sort';
 
   ],
   exports: [
-    TabelaComponent
+    TabelaComponent,
+    FloatActionBarComponent
   ]
 })
 export class ComponentsModule { }

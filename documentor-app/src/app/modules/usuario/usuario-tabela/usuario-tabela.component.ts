@@ -29,12 +29,12 @@ export class UsuarioTabelaComponent {
 
   pesquisar(req: any) {
 
-    console.log(req)
+    console.log("pesquisar", req)
     if (!this.tabela) {
       return;
     }
     this.service.consulta({ ...req, ...this.form.value }).subscribe(page => {
-      console.log(page);
+      console.log("pesquisar", page);
       this.tabela?.setLista(page);
     });
   }
