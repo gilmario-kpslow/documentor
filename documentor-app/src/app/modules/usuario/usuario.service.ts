@@ -2,14 +2,13 @@ import { Injectable, Injector } from '@angular/core';
 import { GenericService } from '../../core/generic.service';
 import { Usuario } from './usuario';
 import { Page } from 'src/app/core/page';
-import { SegurancaService } from 'src/app/core/seguranca.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService extends GenericService {
 
-  constructor(private injector: Injector, private segurancaService: SegurancaService) {
+  constructor(private injector: Injector) {
     super('usuario', injector);
   }
 

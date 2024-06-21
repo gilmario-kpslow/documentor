@@ -13,11 +13,19 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { FloatActionBarComponent } from './float-action-bar/float-action-bar.component';
+import { LayoutButtonComponent } from './layout-button/layout-button.component';
 
 
 
 @NgModule({
-  declarations: [MensagensComponent, LoaderComponent, NaoEncontradoComponent, TabelaComponent, FloatActionBarComponent],
+  declarations: [
+    MensagensComponent,
+    LoaderComponent,
+    NaoEncontradoComponent,
+    TabelaComponent,
+    FloatActionBarComponent,
+    LayoutButtonComponent
+  ],
   imports: [
     CommonModule,
     MatDialogModule,
@@ -26,12 +34,14 @@ import { FloatActionBarComponent } from './float-action-bar/float-action-bar.com
     MatProgressSpinnerModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+
 
   ],
   exports: [
     TabelaComponent,
-    FloatActionBarComponent
+    FloatActionBarComponent,
+    LayoutButtonComponent
   ]
 })
 export class ComponentsModule { }

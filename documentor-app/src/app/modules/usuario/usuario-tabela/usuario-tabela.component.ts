@@ -20,7 +20,7 @@ export class UsuarioTabelaComponent {
   ]);
 
   form: FormGroup;
-  constructor(private service: UsuarioService, private fb: FormBuilder) {
+  constructor(private service: UsuarioService, fb: FormBuilder) {
     this.form = fb.group({
       nome: fb.control('')
     });

@@ -31,6 +31,7 @@ export class LoginComponent {
   }
 
   ngOnInit(): void {
+    console.log(this.segurancaService.logado, this.segurancaService.usuarioLogado)
     if (this.segurancaService.logado) {
       this.router.navigate(['/'])
     }

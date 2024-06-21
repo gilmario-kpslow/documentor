@@ -54,7 +54,7 @@ export class SegurancaService {
   }
 
   registrarUsuarioLogado(usuario: Usuario) {
-    localStorage.setItem(TOKEN, JSON.stringify(usuario));
+    localStorage.setItem(USUARIO, JSON.stringify(usuario));
     this._usuarioLogado = usuario;
   }
 
