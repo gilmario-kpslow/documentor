@@ -1,11 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.com.gilmariosoftware.documentor.seguranca;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import javax.enterprise.context.Dependent;
+import jakarta.enterprise.context.Dependent;
 
 /**
  *

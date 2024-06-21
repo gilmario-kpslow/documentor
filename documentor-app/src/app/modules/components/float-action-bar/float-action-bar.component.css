@@ -1,0 +1,16 @@
+:host .base {
+    min-width: 50px;
+    text-align: center;
+    position: fixed;
+    bottom: 10px;
+    z-index: 99999;
+    background-color: rgba(60, 63, 255, 0.75);
+    width: 900px;
+    color: white;
+    font-weight: 600;
+    
+}
+
+:host .conteudo {
+    text-align: center;
+}

@@ -12,7 +12,7 @@ export class AuthGuard {
     if (this.seguranca.logado) {
       return true;
     }
-    this.router.navigate(['/auth']);
+    this.router.navigate(['/', 'auth']);
     return false;
   }
 }

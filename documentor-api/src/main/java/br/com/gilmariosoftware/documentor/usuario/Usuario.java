@@ -2,12 +2,12 @@ package br.com.gilmariosoftware.documentor.usuario;
 
 import br.com.gilmariosoftware.documentor.generic.GenericEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Cacheable;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import java.io.Serializable;
-import javax.persistence.Cacheable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

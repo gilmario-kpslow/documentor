@@ -2,13 +2,17 @@ package br.com.gilmariosoftware.documentor.generic;
 
 import br.com.gilmariosoftware.documentor.seguranca.SegurancaService;
 import br.com.gilmariosoftware.documentor.usuario.Usuario;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
 import lombok.Getter;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -49,6 +53,10 @@ public abstract class ServiceGeneric<T extends GenericEntity, P extends GenericR
         return Optional.of(modelMapper.map(t, getClassResponse()));
     }
 
+    protected Page<P> toResponse(Page<T> page, PageRequest pageReq) {
+        return new PageImpl(page.getContent().stream().map(p -> toResponse(p)).toList(), pageReq, page.getTotalElements());
+    }
+
     @Transactional
     public <R extends GenericRequest> Optional<P> salvar(R request) {
         return toResponse((T) getRepository().save(toEntity(request)));
@@ -75,4 +83,7 @@ public abstract class ServiceGeneric<T extends GenericEntity, P extends GenericR
 //        return (Class<P>) superclass.getActualTypeArguments()[1];
 //    }
 
+    protected PageRequest getPageRequest(PageParams page) {
+        return PageRequest.of(page.getPaginaAtual(), page.getTamanhoPagina(), Sort.by(page.getDirecao(), page.getCampoOrdenacao()));
+    }
 }

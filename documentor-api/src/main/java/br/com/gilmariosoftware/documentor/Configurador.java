@@ -5,10 +5,10 @@ import br.com.gilmariosoftware.documentor.usuario.Usuario;
 import br.com.gilmariosoftware.documentor.usuario.UsuarioRequest;
 import br.com.gilmariosoftware.documentor.usuario.UsuarioService;
 import io.quarkus.runtime.Startup;
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ApplicationScoped;
 import java.util.Objects;
 import java.util.Optional;
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
 
 @Startup
 @ApplicationScoped

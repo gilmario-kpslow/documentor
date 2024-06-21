@@ -1,0 +1,17 @@
+<app-tabela [configuracao]="configuracao" (pesquisarEvent)="pesquisar($event)">
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-md-4">
+        <mat-form-field [floatLabel]="'always'" class="w-100">
+          <mat-label>Nome</mat-label>
+          <input matInput type="text" formControlName="nome" placeholder="Nome">
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <button mat-raised-button color="primary" (click)="tabela?.pesquisar()" class="button"
+          type="button">Pesquisar</button>
+        <button mat-raised-button color="primary" (click)="limpar()" class="button mx-2" type="button">Limpar</button>
+      </div>
+    </div>
+  </form>
+</app-tabela>

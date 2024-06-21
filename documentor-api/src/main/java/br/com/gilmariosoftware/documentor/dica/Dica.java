@@ -2,11 +2,11 @@ package br.com.gilmariosoftware.documentor.dica;
 
 import br.com.gilmariosoftware.documentor.generic.GenericEntity;
 import br.com.gilmariosoftware.documentor.usuario.Usuario;
-import javax.persistence.Cacheable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.Cacheable;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

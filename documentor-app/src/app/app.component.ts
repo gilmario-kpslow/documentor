@@ -11,5 +11,5 @@ import { slideInAnimation } from './animations';
   ]
 })
 export class AppComponent {
-  title = 'documentor-app';
+  
 }
