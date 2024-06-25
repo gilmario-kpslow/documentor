@@ -5,6 +5,7 @@ import { ProjetoRoutingModule } from './projeto-routing.module';
 import { ProjetoTabelaComponent } from './projeto-tabela/projeto-tabela.component';
 import { ProjetoCadastroComponent } from './projeto-cadastro/projeto-cadastro.component';
 import { ProjetoCardComponent } from './projeto-card/projeto-card.component';
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -17,7 +18,8 @@ import { ProjetoCardComponent } from './projeto-card/projeto-card.component';
   ],
   imports: [
     CommonModule,
-    ProjetoRoutingModule
+    ProjetoRoutingModule,
+    ComponentsModule
   ]
 })
 export class ProjetoModule { }

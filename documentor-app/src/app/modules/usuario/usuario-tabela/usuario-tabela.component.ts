@@ -4,6 +4,7 @@ import { ColunaTabela } from '../../components/tabela/coluna-tabela';
 import { UsuarioService } from '../usuario.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TabelaComponent } from '../../components/tabela/tabela.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuario-tabela',
@@ -15,12 +16,13 @@ export class UsuarioTabelaComponent {
   @ViewChild(TabelaComponent) tabela?: TabelaComponent;
 
   configuracao: ConfiguracaoTabela = new ConfiguracaoTabela([
-    new ColunaTabela('Id', 'id'),
+    new ColunaTabela('Id', 'id', ['w-100px']),
     new ColunaTabela('Nome', 'nome'),
+    new ColunaTabela('Email', 'email'),
   ]);
 
   form: FormGroup;
-  constructor(private service: UsuarioService, fb: FormBuilder) {
+  constructor(private service: UsuarioService, fb: FormBuilder, private router: Router) {
     this.form = fb.group({
       nome: fb.control('')
     });
@@ -41,6 +43,10 @@ export class UsuarioTabelaComponent {
 
   limpar() {
     this.form.patchValue({ nome: '' });
+  }
+
+  novo() {
+    this.router.navigate(['/', 'usuarios', 'novo']);
   }
 
 }

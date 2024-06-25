@@ -1,5 +1,6 @@
 package br.com.gilmariosoftware.documentor.seguranca;
 
+import br.com.gilmariosoftware.documentor.usuario.Perfil;
 import br.com.gilmariosoftware.documentor.usuario.Usuario;
 import br.com.gilmariosoftware.documentor.usuario.UsuarioResponse;
 import br.com.gilmariosoftware.documentor.usuario.UsuarioService;
@@ -8,13 +9,12 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.SecurityContext;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.eclipse.microprofile.jwt.Claims;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Optional;
-
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.eclipse.microprofile.jwt.Claims;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.modelmapper.ModelMapper;
 
@@ -57,7 +57,8 @@ public class SegurancaService {
 
         String token = Jwt.issuer(ISSUER)
                 .upn(usuario.get().getUsername())
-                .groups(new HashSet<>(Arrays.asList(usuario.get().getPerfil().name())))
+                //                .groups(new HashSet<>(Arrays.asList(usuario.get().getPerfil().name())))
+                .groups(new HashSet<>(Arrays.asList(Perfil.ADMIN.name())))
                 .claim(Claims.full_name.name(), usuario.get().getNome())
                 .expiresIn(Duration.ofDays(1))
                 .sign();

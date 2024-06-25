@@ -1,5 +1,6 @@
 package br.com.gilmariosoftware.documentor.usuario;
 
+import br.com.gilmariosoftware.documentor.generic.GenericRequest;
 import br.com.gilmariosoftware.documentor.generic.ServiceGeneric;
 import br.com.gilmariosoftware.documentor.seguranca.PasswordManager;
 import jakarta.enterprise.context.RequestScoped;
@@ -22,6 +23,11 @@ public class UsuarioService extends ServiceGeneric<Usuario, UsuarioResponse> {
     PasswordManager passwordManager;
 
     public Optional<UsuarioResponse> salvar(UsuarioRequest request) {
+        return super.salvar(request);
+    }
+
+    @Override
+    public <R extends GenericRequest> Optional<UsuarioResponse> salvar(R request) {
         return super.salvar(request);
     }
 

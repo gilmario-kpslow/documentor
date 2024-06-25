@@ -31,6 +31,7 @@ public class Configurador {
             admin.setUsername("admin");
             admin.setPassword("admin");
             admin.setNome("Administrador");
+
             usuarioService.salvar(admin);
 
             usuarioService

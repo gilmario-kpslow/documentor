@@ -21,7 +21,7 @@ export class SegurancaService {
     }
 
     if (_usuarioLogado) {
-      this._accessToken = _usuarioLogado;
+      this._usuarioLogado = JSON.parse(_usuarioLogado);
     }
 
   }

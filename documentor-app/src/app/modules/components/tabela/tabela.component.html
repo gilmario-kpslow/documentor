@@ -1,5 +1,7 @@
 <div class="row mb-2">
-  <ng-content #form></ng-content>
+  <div class="col-md-12">
+    <ng-content #form></ng-content>
+  </div>
 </div>
 <div class="row">
   <div class="col-md-12">
@@ -15,5 +17,4 @@
     <mat-paginator [length]="totalElementos" [pageSizeOptions]="configuracao.pagesSizes" [pageIndex]="page"
       [pageSize]="pageSize"></mat-paginator>
   </div>
-
 </div>

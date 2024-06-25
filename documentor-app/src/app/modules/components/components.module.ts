@@ -14,6 +14,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { FloatActionBarComponent } from './float-action-bar/float-action-bar.component';
 import { LayoutButtonComponent } from './layout-button/layout-button.component';
+import { PainelComponent } from './painel/painel.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 
 
@@ -24,7 +26,9 @@ import { LayoutButtonComponent } from './layout-button/layout-button.component';
     NaoEncontradoComponent,
     TabelaComponent,
     FloatActionBarComponent,
-    LayoutButtonComponent
+    LayoutButtonComponent,
+    PainelComponent,
+    CadastroComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +45,8 @@ import { LayoutButtonComponent } from './layout-button/layout-button.component';
   exports: [
     TabelaComponent,
     FloatActionBarComponent,
-    LayoutButtonComponent
+    LayoutButtonComponent,
+    CadastroComponent
   ]
 })
 export class ComponentsModule { }

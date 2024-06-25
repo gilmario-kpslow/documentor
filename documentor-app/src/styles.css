@@ -14,3 +14,7 @@ body {
 .button {
   height: 55px !important;
 }
+
+.w-100px {
+  width: 100px;
+}
