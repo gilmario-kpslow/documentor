@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 import { UsuarioService } from './modules/usuario/usuario.service';
 import { initializeAppFactory } from './core/inicializador';
 import { SegurancaService } from './core/seguranca.service';
+import { LoaderInterceptor } from './modules/components/loader/loader.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SegurancaService } from './core/seguranca.service';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
     { provide: ErrorHandler, useClass: AppErrorHandler },
     { provide: APP_INITIALIZER, useFactory: () => initializeAppFactory, multi: true, deps: [Router, HttpClient, UsuarioService, SegurancaService] },
     MatDialog,

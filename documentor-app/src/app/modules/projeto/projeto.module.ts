@@ -6,6 +6,8 @@ import { ProjetoTabelaComponent } from './projeto-tabela/projeto-tabela.componen
 import { ProjetoCadastroComponent } from './projeto-cadastro/projeto-cadastro.component';
 import { ProjetoCardComponent } from './projeto-card/projeto-card.component';
 import { ComponentsModule } from '../components/components.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +21,9 @@ import { ComponentsModule } from '../components/components.module';
   imports: [
     CommonModule,
     ProjetoRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ]
 })
 export class ProjetoModule { }

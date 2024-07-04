@@ -2,7 +2,9 @@ package br.com.gilmariosoftware.documentor;
 
 import br.com.gilmariosoftware.documentor.usuario.RequestPassword;
 import br.com.gilmariosoftware.documentor.usuario.Usuario;
+import br.com.gilmariosoftware.documentor.usuario.UsuarioRepository;
 import br.com.gilmariosoftware.documentor.usuario.UsuarioRequest;
+import br.com.gilmariosoftware.documentor.usuario.UsuarioResponse;
 import br.com.gilmariosoftware.documentor.usuario.UsuarioService;
 import io.quarkus.runtime.Startup;
 import jakarta.annotation.PostConstruct;
@@ -32,10 +34,10 @@ public class Configurador {
             admin.setPassword("admin");
             admin.setNome("Administrador");
 
-            usuarioService.salvar(admin);
+            UsuarioResponse resp = usuarioService.salvar(admin).get();
 
             usuarioService
-                    .createPassword(RequestPassword.builder().id(admin.getId()).password("admin").build());
+                    .createPassword(RequestPassword.builder().id(resp.getId()).password("admin").build());
         } else {
             Usuario u = op.get();
             if (Objects.isNull(u.getPassword())) {

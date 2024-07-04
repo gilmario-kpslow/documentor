@@ -16,6 +16,11 @@ import { FloatActionBarComponent } from './float-action-bar/float-action-bar.com
 import { LayoutButtonComponent } from './layout-button/layout-button.component';
 import { PainelComponent } from './painel/painel.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { LayoutInputComponent } from './layout-input/layout-input.component';
+import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { ErroPipe } from './pipe/pipe-error';
 
 
 
@@ -28,7 +33,8 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     FloatActionBarComponent,
     LayoutButtonComponent,
     PainelComponent,
-    CadastroComponent
+    CadastroComponent,
+    LayoutInputComponent,
   ],
   imports: [
     CommonModule,
@@ -39,14 +45,17 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-
-
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    ErroPipe
   ],
   exports: [
     TabelaComponent,
     FloatActionBarComponent,
     LayoutButtonComponent,
-    CadastroComponent
+    CadastroComponent,
+    LayoutInputComponent
   ]
 })
 export class ComponentsModule { }

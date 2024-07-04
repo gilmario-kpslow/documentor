@@ -1,12 +1,16 @@
-<div>
-  {{titulo}}
-</div>
-<div>
-  <div>
-    subtitulo
+<div class="container-fluid cadastro">
+  <div class="h3">
+    {{titulo}}
   </div>
-  <ng-content></ng-content>
-</div>
-<div>
-  <app-lbutton (clickEvent)="salvar()" nome="Salvar"></app-lbutton>
+  <div class="h5" *ngIf="subtitulo">
+    {{subtitulo}}
+  </div>
+  <div class="cadastro-corpo">
+    <ng-content></ng-content>
+  </div>
+  <div class="cadastro-acoes">
+    <app-lbutton (clickEvent)="voltar()" nome="Voltar"></app-lbutton>
+    <app-lbutton (clickEvent)="limpar()" nome="Novo"></app-lbutton>
+    <app-lbutton (clickEvent)="salvar()" nome="Salvar"></app-lbutton>
+  </div>
 </div>

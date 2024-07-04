@@ -1,0 +1,7 @@
+<mat-form-field class="w-100" appearance="fill">
+  <mat-label>{{label}}</mat-label>
+  <input [type]="type" matInput name="nome" [formControl]="form">
+  <mat-error *ngIf="hasError()">
+    {{errorMessage | appErro}}
+  </mat-error>
+</mat-form-field>

@@ -8,11 +8,9 @@ import { LoaderService } from './loader.session';
 })
 export class LoaderComponent implements OnInit {
 
-  exibir = false;
-  constructor(private loadeService: LoaderService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.loadeService.loadEvent.subscribe(e => this.exibir = e);
   }
 
 }

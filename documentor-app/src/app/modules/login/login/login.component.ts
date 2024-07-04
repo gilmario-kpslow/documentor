@@ -37,8 +37,6 @@ export class LoginComponent {
     }
   }
 
-  matcher = new MyErrorStateMatcher();
-
   login() {
 
     if (this.form.invalid) {
@@ -61,9 +59,4 @@ export class LoginComponent {
 
 
 
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
+

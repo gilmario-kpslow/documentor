@@ -18,6 +18,7 @@ export class TabelaComponent implements AfterViewInit, OnInit {
   totalElementos = 0;
   pageSize = 10;
   campoOrdenacao: string = 'id';
+  @Input() titulo = "Consulta";
 
   @Input() model: any;
   @ViewChild(MatPaginator) paginator?: MatPaginator;
@@ -25,6 +26,8 @@ export class TabelaComponent implements AfterViewInit, OnInit {
   page: number = 0;
   direcao: 'asc' | 'desc' = 'asc';
   @Output() pesquisarEvent = new EventEmitter();
+  @Output() editEvent = new EventEmitter();
+  @Output() deleteEvent = new EventEmitter();
 
   constructor() {
     this.campoOrdenacao = this.configuracao.campoOrdenacao || 'id';
@@ -32,7 +35,7 @@ export class TabelaComponent implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
     this.cabecalhos = this.configuracao?.colunas.map(c => c.campo);
-
+    this.cabecalhos.push("acoes")
 
   }
 

@@ -19,6 +19,7 @@ export class UsuarioTabelaComponent {
     new ColunaTabela('Id', 'id', ['w-100px']),
     new ColunaTabela('Nome', 'nome'),
     new ColunaTabela('Email', 'email'),
+
   ]);
 
   form: FormGroup;
@@ -30,13 +31,10 @@ export class UsuarioTabelaComponent {
 
 
   pesquisar(req: any) {
-
-    console.log("pesquisar", req)
     if (!this.tabela) {
       return;
     }
     this.service.consulta({ ...req, ...this.form.value }).subscribe(page => {
-      console.log("pesquisar", page);
       this.tabela?.setLista(page);
     });
   }

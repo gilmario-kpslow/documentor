@@ -1,20 +1,36 @@
-<div class="row mb-2">
-  <div class="col-md-12">
-    <ng-content #form></ng-content>
+<div class="container-fluid">
+  <div class="h3">
+    {{titulo}}
   </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <table mat-table [dataSource]="lista" class="example-table" matSort [matSortActive]="campoOrdenacao"
-      [matSortDirection]="direcao">
-      <ng-container [matColumnDef]="c.campo" *ngFor="let c of configuracao?.colunas">
-        <th mat-header-cell mat-sort-header disableClear *matHeaderCellDef [ngClass]="c.classes">{{c.nome}}</th>
-        <td mat-cell *matCellDef="let row">{{getValorCampo(c, row)}}</td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="cabecalhos"></tr>
-      <tr mat-row *matRowDef="let row; columns: cabecalhos;"></tr>
-    </table>
-    <mat-paginator [length]="totalElementos" [pageSizeOptions]="configuracao.pagesSizes" [pageIndex]="page"
-      [pageSize]="pageSize"></mat-paginator>
+  <div class="row mb-2">
+    <div class="col-md-12">
+      <ng-content #form></ng-content>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table mat-table [dataSource]="lista" class="example-table" matSort [matSortActive]="campoOrdenacao"
+        [matSortDirection]="direcao">
+        <ng-container [matColumnDef]="c.campo" *ngFor="let c of configuracao?.colunas">
+          <th mat-header-cell mat-sort-header disableClear *matHeaderCellDef [ngClass]="c.classes">{{c.nome}}</th>
+          <td mat-cell *matCellDef="let row">{{getValorCampo(c, row)}}</td>
+        </ng-container>
+        <ng-container matColumnDef="acoes">
+          <th mat-header-cell disableClear *matHeaderCellDef>#</th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button type="button" (click)="editEvent.emit(row)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button type="button" (click)="deleteEvent.emit(row)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="cabecalhos"></tr>
+        <tr mat-row *matRowDef="let row; columns: cabecalhos;"></tr>
+      </table>
+      <mat-paginator [length]="totalElementos" [pageSizeOptions]="configuracao.pagesSizes" [pageIndex]="page"
+        [pageSize]="pageSize"></mat-paginator>
+    </div>
   </div>
 </div>

@@ -21,7 +21,7 @@
                 <mat-form-field class="w-100" appearance="fill">
                   <mat-label>Usuário</mat-label>
                   <input type="text" matInput required formControlName="username" name="username"
-                    [errorStateMatcher]="matcher">
+                    >
                   <mat-error *ngIf="form?.controls?.['username']?.hasError('required')">
                     Campo obrigatório
                   </mat-error>
@@ -33,7 +33,7 @@
                 <mat-form-field class="w-100" appearance="fill">
                   <mat-label>Senha</mat-label>
                   <input type="password" matInput required formControlName="password" name="password"
-                    [errorStateMatcher]="matcher">
+                    >
                   <mat-error *ngIf="form?.controls?.['password']?.hasError('required')">
                     Campo obrigatório
                   </mat-error>

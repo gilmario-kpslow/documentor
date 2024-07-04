@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -11,8 +12,11 @@ export class CadastroComponent {
   @Output() salvarEvent = new EventEmitter();
   @Input() form: FormGroup | undefined;
   @Input() titulo: string = "Titulo";
-  @Input() subtitulo: string = "Subtitulo";
+  @Input() subtitulo: string | undefined;
 
+  constructor(private location: Location) {
+
+  }
 
   salvar() {
     if (this.form && this.form.invalid) {
@@ -20,6 +24,15 @@ export class CadastroComponent {
       return;
     }
     this.salvarEvent.emit();
+  }
+
+  limpar() {
+    this.form?.reset();
+    this.form?.enable();
+  }
+
+  voltar() {
+    this.location.back();
   }
 
 }
