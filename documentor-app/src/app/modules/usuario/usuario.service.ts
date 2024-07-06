@@ -24,7 +24,15 @@ export class UsuarioService extends GenericService {
     return this.http.post<Usuario>(`${this.url}`, request);
   }
 
+  editar(id: number) {
+    return this.http.get<Usuario>(`${this.url}/${id}`);
+  }
+
   consulta(request: any) {
     return this.http.post<Page<Usuario>>(`${this.url}/consulta`, request);
+  }
+
+  delete(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
   }
 }

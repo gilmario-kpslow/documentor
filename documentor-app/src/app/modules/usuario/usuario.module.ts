@@ -7,8 +7,6 @@ import { UsuarioTabelaComponent } from './usuario-tabela/usuario-tabela.componen
 import { ComponentsModule } from '../components/components.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -22,9 +20,6 @@ import { MatButtonModule } from '@angular/material/button';
     ComponentsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    ReactiveFormsModule
   ]
 })
 export class UsuarioModule { }

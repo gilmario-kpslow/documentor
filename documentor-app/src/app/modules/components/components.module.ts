@@ -21,6 +21,7 @@ import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ErroPipe } from './pipe/pipe-error';
+import { ConfirmarComponent } from './confirmar/confirmar.component';
 
 
 
@@ -35,6 +36,7 @@ import { ErroPipe } from './pipe/pipe-error';
     PainelComponent,
     CadastroComponent,
     LayoutInputComponent,
+    ConfirmarComponent,
   ],
   imports: [
     CommonModule,

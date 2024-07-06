@@ -11,7 +11,7 @@ const MENU: MenuItem[] = [
         nome: 'Projetos', icone: '', itens: [
             { nome: 'Home', icone: '', link: '/projetos' },
             { nome: 'Consulta', icone: '', link: '/projetos/consulta' },
-            { nome: 'Cadastro', icone: '', link: '/projetos/cadastro' },
+            { nome: 'Cadastro', icone: '', link: '/projetos/novo' },
         ]
     },
     {

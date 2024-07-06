@@ -4,6 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator'
 import { ConfiguracaoTabela } from './configuracao-tabela';
 import { Page } from 'src/app/core/page';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmarComponent } from '../confirmar/confirmar.component';
 
 @Component({
   selector: 'app-tabela',
@@ -29,7 +31,7 @@ export class TabelaComponent implements AfterViewInit, OnInit {
   @Output() editEvent = new EventEmitter();
   @Output() deleteEvent = new EventEmitter();
 
-  constructor() {
+  constructor(private dialog: MatDialog) {
     this.campoOrdenacao = this.configuracao.campoOrdenacao || 'id';
   }
 
@@ -78,6 +80,18 @@ export class TabelaComponent implements AfterViewInit, OnInit {
       campoOrdenacao: this.sort.active
     });
   }
+
+  onDelete(event: any) {
+    this.dialog.open(ConfirmarComponent, {
+      data: { pergunta: "Deseja excluir esse registro?" }
+    }).afterClosed().subscribe(resp => {
+      if (resp) {
+        this.deleteEvent.emit(event);
+      }
+    })
+  }
+
+
 }
 
 

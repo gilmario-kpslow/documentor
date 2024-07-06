@@ -1,27 +1,6 @@
 <div class="h2"> Projetos </div>
 <div class="row">
-  <div class="col-md-4">
-    <app-projeto-card></app-projeto-card>
-  </div>
-  <div class="col-md-4">
-    <app-projeto-card></app-projeto-card>
-  </div>
-  <div class="col-md-4">
-    <app-projeto-card></app-projeto-card>
-  </div>
-  <div class="col-md-4">
-    <app-projeto-card></app-projeto-card>
-  </div>
-  <div class="col-md-4">
-    <app-projeto-card></app-projeto-card>
-  </div>
-  <div class="col-md-4">
-    <app-projeto-card></app-projeto-card>
-  </div>
-  <div class="col-md-4">
-    <app-projeto-card></app-projeto-card>
-  </div>
-  <div class="col-md-4">
-    <app-projeto-card></app-projeto-card>
+  <div class="col-md-4" *ngFor="let p of lista">
+    <app-projeto-card [projeto]="p"></app-projeto-card>
   </div>
 </div>

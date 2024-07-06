@@ -1,18 +1,19 @@
 <div class="mb-3 border p-2 rounded shadow">
   <div class="header">
     <div class="titulo text-uppercase">
-      Nome do projeto: {{projeto?.nome}}
+      <span class="text-secondary">Projeto: </span> {{projeto?.nome}}
     </div>
     <div class="subtitulo d-flex text-lowercase">
-      <span class="flex-fill text-secondary">Criado por: Gilmario</span> <span class="text-secondary">Atualizado:
-      </span><span class=""> 10/02/2024 16:52:25</span>
+      <span class="flex-fill text-secondary">Criado por: {{projeto?.criador?.nome}}</span>
+      <span class="text-secondary">Atualizado: </span>
+      <span class=""> {{projeto?.dataAtualizacao| date: 'dd/MM/yyyy'}} {{projeto?.horaAtualizacao}}</span>
     </div>
   </div>
   <div>
-    <div class="p-2">RN concluidas: <span class="text-uppercase text-success">10</span></div>
-    <div class="p-2">RN Pendentes: <span class="text-uppercase text-danger">15</span></div>
+    <div class="p-2">RN concluidas: <span class="text-uppercase text-success">0</span></div>
+    <div class="p-2">RN Pendentes: <span class="text-uppercase text-danger">0</span></div>
     <div class="mt-2 text-truncate">
-      Descrição: Projeto referente ao cadastro de dados significatiovs asd asd asd asd asd asd asd asd asd asd asd
+      Descrição: {{projeto?.descricao}}
     </div>
   </div>
   <div class="acoes mt-3">

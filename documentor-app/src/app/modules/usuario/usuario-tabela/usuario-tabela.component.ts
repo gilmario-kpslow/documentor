@@ -5,6 +5,8 @@ import { UsuarioService } from '../usuario.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TabelaComponent } from '../../components/tabela/tabela.component';
 import { Router } from '@angular/router';
+import { Usuario } from '../usuario';
+import { MensagemService } from '../../components/mensagens/messagem.service';
 
 @Component({
   selector: 'app-usuario-tabela',
@@ -23,7 +25,7 @@ export class UsuarioTabelaComponent {
   ]);
 
   form: FormGroup;
-  constructor(private service: UsuarioService, fb: FormBuilder, private router: Router) {
+  constructor(private service: UsuarioService, fb: FormBuilder, private router: Router, private mensagem: MensagemService) {
     this.form = fb.group({
       nome: fb.control('')
     });
@@ -47,4 +49,14 @@ export class UsuarioTabelaComponent {
     this.router.navigate(['/', 'usuarios', 'novo']);
   }
 
+  editar(usuario: Usuario) {
+    this.router.navigate(['/', 'usuarios', 'edicao', usuario.id]);
+  }
+
+  deletar(usuario: Usuario) {
+    this.service.delete(usuario.id).subscribe(() => {
+      this.mensagem.sucesso("Registro excluído com sucesso!");
+      this.tabela?.pesquisar();
+    })
+  }
 }

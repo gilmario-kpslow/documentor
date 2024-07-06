@@ -1,4 +1,5 @@
-<app-tabela [configuracao]="configuracao" (pesquisarEvent)="pesquisar($event)" titulo="Pesquisa de Usuários">
+<app-tabela [configuracao]="configuracao" (pesquisarEvent)="pesquisar($event)" titulo="Pesquisa de Usuários"
+  (deleteEvent)="deletar($event)" (editEvent)="editar($event)">
   <form [formGroup]="form">
     <div class="row">
       <div class="col-md-8">

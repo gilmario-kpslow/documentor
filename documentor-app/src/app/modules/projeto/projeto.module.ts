@@ -8,6 +8,8 @@ import { ProjetoCardComponent } from './projeto-card/projeto-card.component';
 import { ComponentsModule } from '../components/components.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProjetoService } from './projeto.service';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -23,7 +25,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProjetoRoutingModule,
     ComponentsModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatInputModule
+  ],
+  providers: [
+    ProjetoService
   ]
 })
 export class ProjetoModule { }

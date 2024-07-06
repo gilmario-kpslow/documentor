@@ -2,6 +2,7 @@ package br.com.gilmariosoftware.documentor.generic;
 
 import br.com.gilmariosoftware.documentor.seguranca.SegurancaService;
 import br.com.gilmariosoftware.documentor.usuario.Usuario;
+import br.com.gilmariosoftware.documentor.usuario.UsuarioResponse;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import java.util.List;
@@ -72,18 +73,20 @@ public abstract class ServiceGeneric<T extends GenericEntity, P extends GenericR
     }
 
     public abstract Class<T> getClassEntity();
-//    public Class<T> getClassEntity() {
-//        final ParameterizedType superclass = (ParameterizedType) getClass().getGenericSuperclass();
-//        return (Class<T>) superclass.getActualTypeArguments()[0];
-//    }
 
     public abstract Class<P> getClassResponse();
-//    public final Class<P> getClassResponse() {
-//        final ParameterizedType superclass = (ParameterizedType) getClass().getGenericSuperclass();
-//        return (Class<P>) superclass.getActualTypeArguments()[1];
-//    }
 
     protected PageRequest getPageRequest(PageParams page) {
         return PageRequest.of(page.getPaginaAtual(), page.getTamanhoPagina(), Sort.by(page.getDirecao(), page.getCampoOrdenacao()));
+    }
+
+    public void delete(Long id) {
+        getRepository().findById(id).ifPresent((user) -> {
+            getRepository().delete(user);
+        });
+    }
+
+    public Optional<P> edicao(Long id) {
+        return toResponse((T) getRepository().findById(id).get());
     }
 }

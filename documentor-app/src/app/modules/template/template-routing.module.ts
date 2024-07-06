@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TemplateComponent } from './template/template.component';
 import { UsuarioModule } from '../usuario/usuario.module';
 import { AuthGuard } from 'src/app/core/auth.guard';
+import { PerfilModule } from '../perfil/perfil.module';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
       { path: 'projetos', loadChildren: () => import('../projeto/projeto.module').then(m => m.ProjetoModule) },
       { path: 'dicas', loadChildren: () => import('../dicas/dicas.module').then(m => m.DicasModule) },
       { path: 'usuarios', loadChildren: () => import('../usuario/usuario.module').then(m => UsuarioModule), canActivate: [AuthGuard] },
+      { path: 'perfil', loadChildren: () => import('../perfil/perfil.module').then(m => PerfilModule), canActivate: [AuthGuard] },
     ]
   },
 ];

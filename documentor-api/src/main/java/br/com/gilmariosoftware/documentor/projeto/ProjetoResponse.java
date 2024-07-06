@@ -5,6 +5,9 @@
 package br.com.gilmariosoftware.documentor.projeto;
 
 import br.com.gilmariosoftware.documentor.generic.GenericResponse;
+import br.com.gilmariosoftware.documentor.usuario.Usuario;
+import br.com.gilmariosoftware.documentor.usuario.UsuarioRepository;
+import br.com.gilmariosoftware.documentor.usuario.UsuarioResponse;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -29,12 +32,13 @@ public class ProjetoResponse extends GenericResponse {
     private String nome;
     private String slug;
     private String descricao;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dataCadastro;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
     private LocalTime horaCadastro;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dataAtualizacao;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
     private LocalTime horaAtualizacao;
+    private UsuarioResponse criador;
 }

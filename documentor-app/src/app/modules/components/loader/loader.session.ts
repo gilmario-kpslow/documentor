@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { LoaderComponent } from "./loader.component";
 
@@ -10,9 +10,12 @@ export class LoaderService {
     }
 
     contador = 0;
+
     show() {
         this.contador += 1;
-        this.modalComponent = this.modal.open(LoaderComponent, {});
+        if (this.contador == 1) {
+            this.modalComponent = this.modal.open(LoaderComponent, {});
+        }
     }
 
     hide() {

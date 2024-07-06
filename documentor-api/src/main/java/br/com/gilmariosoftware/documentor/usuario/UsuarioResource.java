@@ -6,9 +6,11 @@ import jakarta.annotation.security.DenyAll;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import java.util.List;
@@ -62,7 +64,18 @@ public class UsuarioResource extends GenericResource<Usuario, UsuarioResponse> {
         return service.consultar(request);
     }
 
-    UsuarioService getService() {
-        return this.service;
+    @DELETE
+    @RolesAllowed(value = {"ADMIN"})
+    @Path("{id}")
+    public void delete(@PathParam("id") Long id) {
+        service.delete(id);
     }
+
+    @GET
+    @RolesAllowed(value = {"ADMIN"})
+    @Path("{id}")
+    public Optional<UsuarioResponse> editar(@PathParam("id") Long id) {
+        return service.edicao(id);
+    }
+
 }

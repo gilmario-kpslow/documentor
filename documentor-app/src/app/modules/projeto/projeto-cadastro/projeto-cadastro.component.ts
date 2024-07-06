@@ -1,9 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
-import { TabelaComponent } from '../../components/tabela/tabela.component';
-import { ConfiguracaoTabela } from '../../components/tabela/configuracao-tabela';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ColunaTabela } from '../../components/tabela/coluna-tabela';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ProjetoService } from '../projeto.service';
+import { MensagemService } from '../../components/mensagens/messagem.service';
 
 @Component({
   selector: 'app-projeto-cadastro',
@@ -12,39 +11,30 @@ import { ColunaTabela } from '../../components/tabela/coluna-tabela';
 })
 export class ProjetoCadastroComponent {
 
-  @ViewChild(TabelaComponent) tabela?: TabelaComponent;
-
-  configuracao: ConfiguracaoTabela = new ConfiguracaoTabela([
-    new ColunaTabela('Id', 'id', ['w-100px']),
-    new ColunaTabela('Nome', 'nome'),
-    new ColunaTabela('Email', 'email'),
-  ]);
-
   form: FormGroup;
-  constructor(fb: FormBuilder, private router: Router) {
+
+  constructor(fb: FormBuilder, private service: ProjetoService, private notificacao: MensagemService, private router: ActivatedRoute) {
     this.form = fb.group({
-      nome: fb.control('')
-    });
+      id: fb.nonNullable.control(undefined),
+      nome: fb.nonNullable.control('', [Validators.required, Validators.maxLength(30)]),
+      descricao: fb.nonNullable.control('', [Validators.required, Validators.maxLength(255)]),
+      slug: fb.nonNullable.control('', [Validators.required, Validators.maxLength(10)]),
+    })
   }
 
-
-  pesquisar(req: any) {
-
-    console.log("pesquisar", req)
-    if (!this.tabela) {
-      return;
+  ngOnInit(): void {
+    const id = this.router.snapshot.params['id']
+    if (id) {
+      this.service.editar(id).subscribe(entity => {
+        this.form.patchValue(entity);
+      })
     }
-    // this.service.consulta({ ...req, ...this.form.value }).subscribe(page => {
-    //   console.log("pesquisar", page);
-    //   this.tabela?.setLista(page);
-    // });
   }
 
-  limpar() {
-    this.form.patchValue({ nome: '' });
-  }
-
-  novo() {
-    this.router.navigate(['/', 'usuarios', 'novo']);
+  salvar() {
+    this.service.create(this.form.value).subscribe((resp) => {
+      this.notificacao.sucesso("Salvo com sucesso!");
+      this.form.disable();
+    });
   }
 }

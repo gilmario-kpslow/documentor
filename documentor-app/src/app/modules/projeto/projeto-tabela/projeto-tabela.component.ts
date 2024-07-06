@@ -1,4 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { TabelaComponent } from '../../components/tabela/tabela.component';
+import { ConfiguracaoTabela } from '../../components/tabela/configuracao-tabela';
+import { ColunaTabela } from '../../components/tabela/coluna-tabela';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MensagemService } from '../../components/mensagens/messagem.service';
+import { Projeto } from '../projeto';
+import { ProjetoService } from '../projeto.service';
 
 @Component({
   selector: 'app-projeto-tabela',
@@ -7,4 +15,47 @@ import { Component } from '@angular/core';
 })
 export class ProjetoTabelaComponent {
 
+  @ViewChild(TabelaComponent) tabela?: TabelaComponent;
+
+  configuracao: ConfiguracaoTabela = new ConfiguracaoTabela([
+    new ColunaTabela('Id', 'id', ['w-100px']),
+    new ColunaTabela('Nome', 'nome'),
+
+  ]);
+
+  form: FormGroup;
+  constructor(private service: ProjetoService, fb: FormBuilder, private router: Router, private mensagem: MensagemService) {
+    this.form = fb.group({
+      nome: fb.control('')
+    });
+  }
+
+
+  pesquisar(req: any) {
+    if (!this.tabela) {
+      return;
+    }
+    this.service.consulta({ ...req, ...this.form.value }).subscribe(page => {
+      this.tabela?.setLista(page);
+    });
+  }
+
+  limpar() {
+    this.form.patchValue({ nome: '' });
+  }
+
+  novo() {
+    this.router.navigate(['/', 'projetos', 'novo']);
+  }
+
+  editar(entity: Projeto) {
+    this.router.navigate(['/', 'projetos', 'edicao', entity.id]);
+  }
+
+  deletar(entity: Projeto) {
+    this.service.delete(entity.id).subscribe(() => {
+      this.mensagem.sucesso("Registro excluído com sucesso!");
+      this.tabela?.pesquisar();
+    })
+  }
 }

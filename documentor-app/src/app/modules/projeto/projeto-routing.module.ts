@@ -7,8 +7,8 @@ import { ProjetoCadastroComponent } from './projeto-cadastro/projeto-cadastro.co
 const routes: Routes = [
   { path: '', component: ProjetoHomeComponent },
   { path: 'consulta', component: ProjetoTabelaComponent },
-  { path: 'cadastro', component: ProjetoCadastroComponent },
-  { path: 'cadastro/:id', component: ProjetoCadastroComponent },
+  { path: 'novo', component: ProjetoCadastroComponent },
+  { path: 'edicao/:id', component: ProjetoCadastroComponent },
 ];
 
 @NgModule({
