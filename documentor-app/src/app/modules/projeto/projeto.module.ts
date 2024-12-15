@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProjetoService } from './projeto.service';
 import { MatInputModule } from '@angular/material/input';
+import { ProjetosExplorarComponent } from './projetos-explorar/projetos-explorar.component';
 
 
 
@@ -18,7 +19,8 @@ import { MatInputModule } from '@angular/material/input';
     ProjetoHomeComponent,
     ProjetoTabelaComponent,
     ProjetoCadastroComponent,
-    ProjetoCardComponent
+    ProjetoCardComponent,
+    ProjetosExplorarComponent
   ],
   imports: [
     CommonModule,

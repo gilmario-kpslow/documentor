@@ -12,7 +12,6 @@ export class ErroPipe implements PipeTransform {
         }
 
         const mensagem = Object.keys(value).map((k, v) => {
-            console.log(value)
             switch (k) {
                 case 'required': return 'Campo obrigatório';
                 case 'minlength': return `Tamanho mínimo aceito ${value[k].requiredLength}`;

@@ -1,0 +1,10 @@
+export const PROJETOS = "projetos";
+export const DICAS = "dicas";
+export const USUARIOS = "usuarios";
+export const NOVO = "novo";
+export const CONSULTA = "consultar";
+export const EDICAO = "edicao";
+export const AUTH = "auth";
+export const LOGIN = "login"
+export const EXPLORAR = "explorar";
+export const PERFIL = "perfil";

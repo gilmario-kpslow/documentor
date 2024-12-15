@@ -5,11 +5,12 @@ import { loginGuarde } from 'src/app/core/login.guard.fn';
 import { DicaCreateComponent } from './dica-create/dica-create.component';
 import { DicaPageComponent } from './dica-page/dica-page.component';
 import { DicasListComponent } from './dicas-list/dicas-list.component';
+import { EDICAO, NOVO } from 'src/app/core/menu/menu-const';
 
 const routes: Routes = [
   { path: '', component: DicasListComponent },
-  { path: 'create', component: DicaCreateComponent, canActivate: [loginGuarde] },
-  { path: 'create/:id', component: DicaPageComponent, canActivate: [loginGuarde] },
+  { path: NOVO, component: DicaCreateComponent, canActivate: [loginGuarde] },
+  { path: `${EDICAO}/:id`, component: DicaPageComponent, canActivate: [loginGuarde] },
 ];
 
 @NgModule({

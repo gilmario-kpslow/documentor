@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Projeto } from '../projeto';
+import { ProjetoAppService } from '../projeto-app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-projeto-card',
@@ -9,9 +11,12 @@ import { Projeto } from '../projeto';
 export class ProjetoCardComponent {
 
   @Input() projeto?: Projeto;
-
+  constructor(private projetoCache: ProjetoAppService, private router: Router) { }
 
   selecionar() {
-    console.log('Selecionado')
+    if (this.projeto) {
+      this.projetoCache.setProjeto(this.projeto);
+      this.router.navigate(['/', 'projeto', 'explorar']);
+    }
   }
 }

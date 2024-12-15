@@ -1,56 +1,42 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <img src="/assets/icons/icons-documento.svg" alt="">
-    <a class="navbar-brand mx-3" routerLink="/">Regra de Negocio DOC</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav me-auto mb-lg-0">
-        <li class="nav-item" *ngIf="isLogado">
-          <button class="btn btn-outline-primary px-4" type="button" routerLinkActive="active" aria-current="page"
-            [matMenuTriggerFor]="menuAdmin">Acesso</button>
-          <mat-menu #menuAdmin="matMenu">
-            <button mat-menu-item routerLink="/usuarios">Usuários</button>
-            <button mat-menu-item routerLink="/usuarios/novo">Novo</button>
-          </mat-menu>
-        </li>
-        <li class="nav-item">
-          <button class="btn btn-outline-primary px-4" type="button" routerLinkActive="active" aria-current="page"
-            [matMenuTriggerFor]="menuProjeto">Projeto</button>
-          <mat-menu #menuProjeto="matMenu">
-            <button mat-menu-item routerLink="/projetos">Projetos</button>
-            <button mat-menu-item routerLink="/projetos/consulta" *ngIf="isLogado">Consulta</button>
-            <button mat-menu-item routerLink="/projetos/novo" *ngIf="isLogado">Cadastro</button>
-          </mat-menu>
-        </li>
-        <li class="nav-item">
-          <button class="btn btn-outline-primary px-4" type="button" routerLinkActive="active" aria-current="page"
-            [matMenuTriggerFor]="menuDicas">Dicas</button>
-          <mat-menu #menuDicas="matMenu">
-            <button mat-menu-item routerLink="/dicas">Dicas</button>
-            <button mat-menu-item routerLink="/dicas/consulta" *ngIf="isLogado">Consulta</button>
-            <button mat-menu-item routerLink="/dicas/cadastro" *ngIf="isLogado">Cadastro</button>
-          </mat-menu>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <button class="btn btn-outline-success px-3" type="button" routerLink="/perfil" *ngIf="isLogado">Perfil</button>
-        <button class="btn btn-outline-success px-3" type="button" routerLink="/auth" *ngIf="!isLogado">Login</button>
-      </form>
+<div class="d-flex flex-column h-100">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <img src="/assets/icons/icons-documento.svg" alt="">
+      <a class="navbar-brand mx-3" routerLink="/">Regra de Negocio DOC</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav me-auto mb-lg-0">
+
+          <li class="nav-item" *ngFor="let m of menus">
+            <button class="btn btn-outline-primary px-4" type="button" routerLinkActive="active" aria-current="page"
+              [matMenuTriggerFor]="appMenu" [matMenuTriggerData]="{itens: m.itens}">{{m.nome}}
+
+              <mat-menu #appMenu="matMenu">
+                <ng-template matMenuContent let-itens="itens">
+                  <button *ngFor="let item of itens" mat-menu-item [routerLink]="item.link">{{item.nome}}</button>
+                </ng-template>
+              </mat-menu>
+            </button>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <button class="btn btn-outline-success px-3" type="button" [routerLink]="perfil"
+            *ngIf="isLogado">Perfil</button>
+          <button class="btn btn-outline-success px-3" type="button" [routerLink]="auth"
+            *ngIf="!isLogado">Login</button>
+        </form>
+      </div>
     </div>
-  </div>
-</nav>
-
-
-<div class="d-flex flex-column bg-danger">
-  <hr>
-  <div class="flex-fill">
+  </nav>
+  <div class="flex-grow-1 container-fluid">
     <router-outlet></router-outlet>
-    <!-- <app-float-action-bar></app-float-action-bar> -->
   </div>
   <footer class="text-center">
-    RODAPE
+    <div class="text-muted">
+      documentor app
+    </div>
   </footer>
 </div>

@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../usuario/usuario.service';
 import { Usuario } from '../../usuario/usuario';
 import { SegurancaService } from 'src/app/core/seguranca.service';
-import { MenuService } from 'src/app/core/menu/menu.service';
+import { MENU, MenuService } from 'src/app/core/menu/menu.service';
 import { MenuItem } from 'src/app/core/menu/menu-item';
+import { AUTH, PERFIL } from 'src/app/core/menu/menu-const';
 
 
 
@@ -15,10 +16,13 @@ import { MenuItem } from 'src/app/core/menu/menu-item';
 export class TemplateComponent implements OnInit {
 
   usuario: Usuario | undefined;
+
+  menus = MENU;
+  perfil = `/${PERFIL}`;
+  auth = `/${AUTH}`;
+
   constructor(private service: SegurancaService) {
-
   }
-
 
   ngOnInit(): void {
     this.usuario = this.service.usuarioLogado;
@@ -27,6 +31,5 @@ export class TemplateComponent implements OnInit {
   get isLogado() {
     return this.usuario !== undefined;
   }
-
 
 }

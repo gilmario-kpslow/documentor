@@ -7,6 +7,9 @@ import { TabelaComponent } from '../../components/tabela/tabela.component';
 import { Router } from '@angular/router';
 import { Usuario } from '../usuario';
 import { MensagemService } from '../../components/mensagens/messagem.service';
+import { EDICAO, NOVO, USUARIOS } from 'src/app/core/menu/menu-const';
+import { MatDialog } from '@angular/material/dialog';
+import { UsuarioCadastroComponent } from '../usuario-cadastro/usuario-cadastro.component';
 
 @Component({
   selector: 'app-usuario-tabela',
@@ -25,7 +28,13 @@ export class UsuarioTabelaComponent {
   ]);
 
   form: FormGroup;
-  constructor(private service: UsuarioService, fb: FormBuilder, private router: Router, private mensagem: MensagemService) {
+  constructor(
+    private service: UsuarioService,
+    private fb: FormBuilder,
+    private router: Router,
+    private mensagem: MensagemService,
+    private matDialog: MatDialog
+  ) {
     this.form = fb.group({
       nome: fb.control('')
     });
@@ -46,11 +55,22 @@ export class UsuarioTabelaComponent {
   }
 
   novo() {
-    this.router.navigate(['/', 'usuarios', 'novo']);
+    // this.router.navigate(['/', USUARIOS, NOVO]);
+    this.matDialog.open(UsuarioCadastroComponent).afterClosed().subscribe(resp => {
+      if (resp) {
+        this.tabela?.pesquisar();
+      }
+    });
   }
 
   editar(usuario: Usuario) {
-    this.router.navigate(['/', 'usuarios', 'edicao', usuario.id]);
+    // this.router.navigate(['/', USUARIOS, EDICAO, usuario.id]);
+    this.matDialog.open(UsuarioCadastroComponent).afterClosed().subscribe(resp => {
+      if (resp) {
+        this.tabela?.pesquisar();
+      }
+    });
+
   }
 
   deletar(usuario: Usuario) {
@@ -59,4 +79,6 @@ export class UsuarioTabelaComponent {
       this.tabela?.pesquisar();
     })
   }
+
+
 }
