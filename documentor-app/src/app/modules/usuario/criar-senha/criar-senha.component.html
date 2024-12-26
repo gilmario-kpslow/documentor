@@ -1,0 +1,18 @@
+<mat-dialog-content>
+    <form [formGroup]="form">
+        <div class="row">
+            <div class="col-md-12">
+                <app-layout-input label="Nova senha" type="password" formControlName="password"></app-layout-input>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <app-lbutton nome="Salvar" class="w-100" (clickEvent)="salvar()"></app-lbutton>
+            </div>
+        </div>
+    </div>
+</mat-dialog-actions>

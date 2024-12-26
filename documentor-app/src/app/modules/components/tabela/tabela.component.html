@@ -24,6 +24,15 @@
             <button mat-icon-button type="button" (click)="onDelete(row)">
               <mat-icon>delete</mat-icon>
             </button>
+            <button *ngIf="acoes.length" mat-icon-button type="button" aria-current="page"
+              [matMenuTriggerFor]="appMenu">
+              <mat-icon>more_vert</mat-icon>
+              <mat-menu #appMenu="matMenu">
+                <ng-template matMenuContent let-itens="itens">
+                  <button *ngFor="let item of acoes" mat-menu-item (click)="item.acao(row)">{{item.nome}}</button>
+                </ng-template>
+              </mat-menu>
+            </button>
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="cabecalhos"></tr>

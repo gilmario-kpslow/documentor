@@ -6,6 +6,7 @@ import { ConfiguracaoTabela } from './configuracao-tabela';
 import { Page } from 'src/app/core/page';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmarComponent } from '../confirmar/confirmar.component';
+import { TabelaAcao } from './tabela-acao';
 
 @Component({
   selector: 'app-tabela',
@@ -30,6 +31,7 @@ export class TabelaComponent implements AfterViewInit, OnInit {
   @Output() pesquisarEvent = new EventEmitter();
   @Output() editEvent = new EventEmitter();
   @Output() deleteEvent = new EventEmitter();
+  @Input() acoes: TabelaAcao[] = [];
 
   constructor(private dialog: MatDialog) {
     this.campoOrdenacao = this.configuracao.campoOrdenacao || 'id';

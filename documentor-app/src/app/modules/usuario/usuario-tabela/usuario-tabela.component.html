@@ -1,16 +1,24 @@
 <app-tabela [configuracao]="configuracao" (pesquisarEvent)="pesquisar($event)" titulo="Pesquisa de Usuários"
-  (deleteEvent)="deletar($event)" (editEvent)="editar($event)">
+  (deleteEvent)="deletar($event)" (editEvent)="editar($event)" [acoes]="acoes">
   <form [formGroup]="form">
     <div class="row">
-      <div class="col-md-8">
+      <!-- <div class="col-md-8">
         <mat-form-field class="w-100">
           <mat-label>Nome</mat-label>
           <input matInput type="text" formControlName="nome">
         </mat-form-field>
+
+
+      </div> -->
+      <div class="col-12 col-md-4">
+        <app-layout-input label="Nome" formControlName="nome"></app-layout-input>
+      </div>
+      <div class="col-12 col-md-4">
+        <app-layout-input label="Email" formControlName="email"></app-layout-input>
       </div>
       <div class="col-md-4">
         <app-lbutton nome="Pesquisar" (clickEvent)="tabela?.pesquisar()"></app-lbutton>
-        <app-lbutton nome="Limpar" (clickEvent)="limpar()"></app-lbutton>
+        <app-lbutton nome="Limpar" class="mx-1" (clickEvent)="limpar()"></app-lbutton>
         <app-lbutton nome="Novo" (clickEvent)="novo()"></app-lbutton>
       </div>
     </div>

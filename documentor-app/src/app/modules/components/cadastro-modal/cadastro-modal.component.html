@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>{{titulo}}</h2>
+<div class="h5" *ngIf="subtitulo">
+    {{subtitulo}}
+</div>
+<mat-dialog-content class="">
+    <div class="container-fluid cadastro">
+        <!-- <div class="h3">
+            {{titulo}}
+        </div> -->
+        <div class="cadastro-corpo">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <div class="cadastro-acoes">
+        <app-lbutton (clickEvent)="salvar()" nome="Salvar"></app-lbutton>
+        <app-lbutton (clickEvent)="fechar()" nome="Fechar"></app-lbutton>
+        <!-- <app-lbutton (clickEvent)="limpar()" nome="Novo"></app-lbutton> -->
+    </div>
+</mat-dialog-actions>

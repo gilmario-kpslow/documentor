@@ -1,3 +1,11 @@
 :host .acao {
-    width: 150px;
+    width: 180px;
+}
+
+:host tr:hover {
+    background: #eeeeee;
+}
+
+:host tr:nth-child(even) {
+    background-color: #f2f2f2;
 }

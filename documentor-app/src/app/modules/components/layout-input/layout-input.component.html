@@ -1,6 +1,6 @@
 <mat-form-field class="w-100" appearance="fill">
   <mat-label>{{label}}</mat-label>
-  <input [type]="type" matInput name="nome" [formControl]="form">
+  <input [type]="type" matInput name="nome" [formControl]="form" autocomplete="off">
   <mat-error *ngIf="hasError()">
     {{errorMessage | appErro}}
   </mat-error>

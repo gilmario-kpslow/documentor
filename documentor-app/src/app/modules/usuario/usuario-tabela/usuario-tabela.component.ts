@@ -10,6 +10,8 @@ import { MensagemService } from '../../components/mensagens/messagem.service';
 import { EDICAO, NOVO, USUARIOS } from 'src/app/core/menu/menu-const';
 import { MatDialog } from '@angular/material/dialog';
 import { UsuarioCadastroComponent } from '../usuario-cadastro/usuario-cadastro.component';
+import { CriarSenhaComponent } from '../criar-senha/criar-senha.component';
+import { TabelaAcao } from '../../components/tabela/tabela-acao';
 
 @Component({
   selector: 'app-usuario-tabela',
@@ -19,6 +21,7 @@ import { UsuarioCadastroComponent } from '../usuario-cadastro/usuario-cadastro.c
 export class UsuarioTabelaComponent {
 
   @ViewChild(TabelaComponent) tabela?: TabelaComponent;
+  acoes: TabelaAcao[] = [];
 
   configuracao: ConfiguracaoTabela = new ConfiguracaoTabela([
     new ColunaTabela('Id', 'id', ['w-100px']),
@@ -36,10 +39,12 @@ export class UsuarioTabelaComponent {
     private matDialog: MatDialog
   ) {
     this.form = fb.group({
-      nome: fb.control('')
+      nome: fb.control(''),
+      email: fb.control('')
     });
-  }
 
+    this.acoes.push({ acao: (e) => this.criarSenha(e), icone: '', nome: 'Criar/Alterar senha' })
+  }
 
   pesquisar(req: any) {
     if (!this.tabela) {
@@ -65,7 +70,7 @@ export class UsuarioTabelaComponent {
 
   editar(usuario: Usuario) {
     // this.router.navigate(['/', USUARIOS, EDICAO, usuario.id]);
-    this.matDialog.open(UsuarioCadastroComponent).afterClosed().subscribe(resp => {
+    this.matDialog.open(UsuarioCadastroComponent, { data: usuario }).afterClosed().subscribe(resp => {
       if (resp) {
         this.tabela?.pesquisar();
       }
@@ -78,6 +83,14 @@ export class UsuarioTabelaComponent {
       this.mensagem.sucesso("Registro excluído com sucesso!");
       this.tabela?.pesquisar();
     })
+  }
+
+  criarSenha(usuario: Usuario) {
+    this.matDialog.open(CriarSenhaComponent, { data: usuario }).afterClosed().subscribe(resp => {
+      if (resp) {
+        this.tabela?.pesquisar();
+      }
+    });
   }
 
 

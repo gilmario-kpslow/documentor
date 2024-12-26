@@ -1,5 +1,5 @@
 <form [formGroup]="form">
-  <app-cadastro [form]="form" titulo="Cadastro de Usuários" (salvarEvent)="salvar()">
+  <app-cadastro-modal [form]="form" titulo="Novo de Usuário" (salvarEvent)="salvar()">
     <div class="row justify-content-md-center">
       <div class="col-12 col-md-12">
         <app-layout-input label="Nome" formControlName="nome"></app-layout-input>
@@ -14,5 +14,5 @@
         <app-layout-input label="Senha" formControlName="password" type="password"></app-layout-input>
       </div>
     </div>
-  </app-cadastro>
+  </app-cadastro-modal>
 </form>

@@ -8,12 +8,15 @@ import { ComponentsModule } from '../components/components.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { CriarSenhaComponent } from './criar-senha/criar-senha.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
   declarations: [
     UsuarioCadastroComponent,
-    UsuarioTabelaComponent
+    UsuarioTabelaComponent,
+    CriarSenhaComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +24,8 @@ import { MatInputModule } from '@angular/material/input';
     ComponentsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
 
   ]
 })

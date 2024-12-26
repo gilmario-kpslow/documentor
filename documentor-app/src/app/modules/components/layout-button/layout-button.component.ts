@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class LayoutButtonComponent {
 
+  @Input() class = '';
   @Input() nome = "Botão";
   @Output() clickEvent = new EventEmitter();
   @Input() icone: string | undefined;
