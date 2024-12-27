@@ -29,11 +29,10 @@ public class Usuario extends GenericEntity implements Serializable {
 
     @Column(unique = true, length = 40, nullable = false)
     private String username;
-    @Column(length = 255, nullable = true, insertable = false, updatable = false)
-    @JsonIgnore
-    private String password;
     @Column(length = 100, nullable = true)
     private String nome;
+    @Column(length = 255, nullable = true)
+    private String password;
     @Column(length = 100, nullable = false)
     private String email;
     @Column(length = 20, nullable = true)

@@ -1,5 +1,5 @@
 <form [formGroup]="form">
-  <app-cadastro-modal [form]="form" titulo="Novo de Usuário" (salvarEvent)="salvar()">
+  <app-cadastro-modal [form]="form" titulo="Novo Usuário" (salvarEvent)="salvar()">
     <div class="row justify-content-md-center">
       <div class="col-12 col-md-12">
         <app-layout-input label="Nome" formControlName="nome"></app-layout-input>
@@ -10,9 +10,9 @@
       <div class="col-12 col-md-12">
         <app-layout-input label="Nome de Usuário" formControlName="username"></app-layout-input>
       </div>
-      <div class="col-12 col-md-12">
+      <!-- <div class="col-12 col-md-12">
         <app-layout-input label="Senha" formControlName="password" type="password"></app-layout-input>
-      </div>
+      </div> -->
     </div>
   </app-cadastro-modal>
 </form>

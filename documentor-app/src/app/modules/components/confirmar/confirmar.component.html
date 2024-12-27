@@ -3,6 +3,8 @@
 
 </mat-dialog-content>
 <mat-dialog-actions>
-    <app-lbutton (clickEvent)="ok()" nome="Confirmar"></app-lbutton>
-    <app-lbutton mat-dialog-close nome="Cancelar"></app-lbutton>
+    <div class="d-flex px-3 justify-content-between w-100">
+        <app-lbutton (clickEvent)="ok()" nome="Confirmar"></app-lbutton>
+        <app-lbutton mat-dialog-close nome="Cancelar"></app-lbutton>
+    </div>
 </mat-dialog-actions>

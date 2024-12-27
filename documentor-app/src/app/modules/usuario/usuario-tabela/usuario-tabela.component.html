@@ -2,14 +2,6 @@
   (deleteEvent)="deletar($event)" (editEvent)="editar($event)" [acoes]="acoes">
   <form [formGroup]="form">
     <div class="row">
-      <!-- <div class="col-md-8">
-        <mat-form-field class="w-100">
-          <mat-label>Nome</mat-label>
-          <input matInput type="text" formControlName="nome">
-        </mat-form-field>
-
-
-      </div> -->
       <div class="col-12 col-md-4">
         <app-layout-input label="Nome" formControlName="nome"></app-layout-input>
       </div>

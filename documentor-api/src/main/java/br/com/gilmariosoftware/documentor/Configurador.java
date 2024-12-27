@@ -2,7 +2,6 @@ package br.com.gilmariosoftware.documentor;
 
 import br.com.gilmariosoftware.documentor.usuario.RequestPassword;
 import br.com.gilmariosoftware.documentor.usuario.Usuario;
-import br.com.gilmariosoftware.documentor.usuario.UsuarioRepository;
 import br.com.gilmariosoftware.documentor.usuario.UsuarioRequest;
 import br.com.gilmariosoftware.documentor.usuario.UsuarioResponse;
 import br.com.gilmariosoftware.documentor.usuario.UsuarioService;
@@ -16,7 +15,7 @@ import java.util.Optional;
 @ApplicationScoped
 public class Configurador {
 
-    private UsuarioService usuarioService;
+    private final UsuarioService usuarioService;
 
     public Configurador(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
@@ -31,7 +30,7 @@ public class Configurador {
             UsuarioRequest admin = new UsuarioRequest();
             admin.setEmail("admin@email.com");
             admin.setUsername("admin");
-            admin.setPassword("admin");
+//            admin.setPassword("admin");
             admin.setNome("Administrador");
 
             UsuarioResponse resp = usuarioService.salvar(admin).get();

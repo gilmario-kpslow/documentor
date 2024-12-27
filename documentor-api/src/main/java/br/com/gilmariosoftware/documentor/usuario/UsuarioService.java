@@ -64,6 +64,7 @@ public class UsuarioService extends ServiceGeneric<Usuario, UsuarioResponse> {
     }
 
     public Page<UsuarioResponse> consultar(ConsultaUsuarioRequest page) {
+
         return toResponse(repository.findByNomeLike(page.getNome() + "%", getPageRequest(page)), getPageRequest(page));
     }
 

@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Projeto } from '../projeto';
 import { ProjetoAppService } from '../projeto-app.service';
 import { Router } from '@angular/router';
+import { EXPLORAR, PROJETOS } from 'src/app/core/menu/menu-const';
 
 @Component({
   selector: 'app-projeto-card',
@@ -16,7 +17,7 @@ export class ProjetoCardComponent {
   selecionar() {
     if (this.projeto) {
       this.projetoCache.setProjeto(this.projeto);
-      this.router.navigate(['/', 'projeto', 'explorar']);
+      this.router.navigate(['/', PROJETOS, EXPLORAR, this.projeto.id]);
     }
   }
 }

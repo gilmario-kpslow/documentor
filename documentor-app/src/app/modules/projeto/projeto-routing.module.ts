@@ -10,7 +10,6 @@ const routes: Routes = [
   { path: '', component: ProjetoHomeComponent },
   { path: CONSULTA, component: ProjetoTabelaComponent },
   { path: NOVO, component: ProjetoCadastroComponent },
-  { path: `${EDICAO}/:id`, component: ProjetoCadastroComponent },
   { path: `${EXPLORAR}/:id`, component: ProjetosExplorarComponent },
 ];
 

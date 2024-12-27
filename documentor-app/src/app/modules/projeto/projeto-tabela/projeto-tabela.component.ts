@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { MensagemService } from '../../components/mensagens/messagem.service';
 import { Projeto } from '../projeto';
 import { ProjetoService } from '../projeto.service';
+import { ProjetoCadastroComponent } from '../projeto-cadastro/projeto-cadastro.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-projeto-tabela',
@@ -24,7 +26,12 @@ export class ProjetoTabelaComponent {
   ]);
 
   form: FormGroup;
-  constructor(private service: ProjetoService, fb: FormBuilder, private router: Router, private mensagem: MensagemService) {
+  constructor(
+    private service: ProjetoService,
+    fb: FormBuilder,
+    private router: Router,
+    private matDialog: MatDialog,
+    private mensagem: MensagemService) {
     this.form = fb.group({
       nome: fb.control('')
     });
@@ -45,12 +52,22 @@ export class ProjetoTabelaComponent {
   }
 
   novo() {
-    this.router.navigate(['/', 'projetos', 'novo']);
+    this.matDialog.open(ProjetoCadastroComponent).afterClosed().subscribe(resp => {
+      if (resp) {
+        this.tabela?.pesquisar();
+      }
+    });
   }
 
   editar(entity: Projeto) {
-    this.router.navigate(['/', 'projetos', 'edicao', entity.id]);
+    this.matDialog.open(ProjetoCadastroComponent, { data: entity }).afterClosed().subscribe(resp => {
+      if (resp) {
+        this.tabela?.pesquisar();
+      }
+    });
   }
+
+
 
   deletar(entity: Projeto) {
     this.service.delete(entity.id).subscribe(() => {

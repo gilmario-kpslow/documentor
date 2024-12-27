@@ -13,7 +13,7 @@ import lombok.Setter;
 public class UsuarioRequest extends GenericRequest {
 
     private String username;
-    private String password;
+//    private String password;
     private String nome;
     private String email;
 

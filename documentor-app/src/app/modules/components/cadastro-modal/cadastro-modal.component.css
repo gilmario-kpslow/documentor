@@ -1,3 +1,7 @@
 :host .cadastro-corpo {
     background-color: aliceblue;
 }
+
+:host .cadastro-acoes {
+    padding-left: 26px;
+}

@@ -3,7 +3,7 @@ import { TabelaAcao } from "./tabela-acao";
 
 export class ConfiguracaoTabela {
 
-  constructor(public colunas: ColunaTabela[], public pagesSizes: number[] = [5, 10, 50], public campoOrdenacao?: string, public acoes: TabelaAcao[] = []) { }
+  constructor(public colunas: ColunaTabela[], public pagesSizes: number[] = [5, 10, 25, 50, 100], public campoOrdenacao?: string, public acoes: TabelaAcao[] = []) { }
 
   sortActive(): string {
     if (this.campoOrdenacao) {
